@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../static//chat-js.js"></script>
+	</head>
+	<body>
+		<a href="/logout">Log out</a>   　　<a href="/GenerateTag">Generate Tag</a>
+        <h1>WELCOME!!! {{name}}#{{tag}}</h1>
+
+		<form method="POST" action="/make-friend-request">
+			<input type="text" name="friend" placeholder="Name#0000">
+			<button>Request</button>
+		</form>
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+
+		<h2>Sent request</h2>
+		<div>
+            {% for req in myreq %}
+            <p>{{req.recipient_name}} <a href="/cancel-friend-request/{{req.recipient_name}}"> ❌</a></p>
+            {% endfor %}
+        </div>
+
+		<h2>Recieved request</h2>
+		<div>
+            {% for req in friendreq %}
+            <p>{{req.sender_name}} <a href="/add-friend/{{req.sender_name}}"> ✅</a> <a href="/reject-friend-request/{{req.sender_name}}"> ❌</a></p>
+            {% endfor %}
+        </div>
+
+		<h2>Friend</h2>
+		<div>
+            {% for friend in myfriend %}
+            <p>{{friend}}</p>
+            {% endfor %}
+        </div>
+
+
+
+	</body>
+</html>

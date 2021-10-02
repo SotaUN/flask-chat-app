@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>CHAT</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../static//chat-js.js"></script>
+	</head>
+	<body>
+        <p>Hello!!!</p>
+
+        <div>
+            {% for co in cont %}
+            <p>{{ co.id }} {{ co.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}  {{ co.name }}  {{ co.content }}   {{co.thread}}  {{thread}}</p>
+            {% endfor %}
+        </div>
+
+
+		<form method="post" id="form" action="/{{thread}}">
+			<input type="text" value="" name="name" placeholder="Name">
+            <input type="text" value="" name="pass" placeholder="Password">
+            <input type="email" name = "email" value="example@gmail.com">
+            <input type="text" value="" name="content" placeholder="Content">
+            <button id="btn-send">sub</button>
+            <input type="button" value="送信" onclick="send();"/>
+		</form>
+		<p>ans = {{ans}}</p>
+
+        <!--<script>
+            $(function(){
+                $("#nameget").click(function(){
+                    alert("start");
+                })
+            });
+        </script>-->
+
+        
+        
+	</body>
+</html>

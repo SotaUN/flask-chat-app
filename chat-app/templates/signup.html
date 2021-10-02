@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sign Up</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../static//chat-js.js"></script>
+        
+	</head>
+	<body>
+        <h1>Sign Up</h1>
+        <form method="POST" action="/signup">
+            <input type="text" name="name" placeholder="User Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="confirmation-password" placeholder="Confirmation Password">
+            <button>Sign Up</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{messages[0]}}
+        {% endif %}
+        {% endwith %}
+	</body>
+</html>
